@@ -1,0 +1,8 @@
+version: "3.5"
+services:
+  server:
+    image: docker.io/aler9/rtsp-simple-server
+    ports:
+      - 8554:8554
+    volumes:
+      - ./rtsp-simple-server.yml:/rtsp-simple-server.yml

@@ -36,8 +36,6 @@ public class Channel {
     public List<Video> getVideos(Config conf){
         String vids = new Net().get(conf.instance + "/api/v1/channels/" + id);
 
-        vids = vids.replaceAll("[^\\x20-\\x7e]", "");
-
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         ChannelResp root = gson.fromJson(vids, ChannelResp.class);

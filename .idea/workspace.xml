@@ -4,45 +4,225 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Working with awt.">
-      <change afterPath="$PROJECT_DIR$/lib/3.4/swt_darwin.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/3.4/swt_linux.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/3.4/swt_win32.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/3.8/swt_darwin.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/3.8/swt_linux.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/3.8/swt_win32.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-cocoa-macosx.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-gtk-linux-x86.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-gtk-linux-x86_64.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-win32-win32-x86.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-cocoa-macosx.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-gtk-linux-x86_64.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-win32-win32-x86.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/3.5/swt_darwin-3.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/3.5/swt_darwin-3.5.pom" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/3.8/swt_darwin-3.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/3.8/swt_darwin-3.8.pom" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/maven-metadata-local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.5/swt_linux-3.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.5/swt_linux-3.5.pom" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.8/swt_linux-3.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.8/swt_linux-3.8.pom" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/maven-metadata-local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.5/swt_win32-3.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.5/swt_win32-3.5.pom" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.8/swt_win32-3.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.8/swt_win32-3.8.pom" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/maven-metadata-local.xml" afterDir="false" />
+    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Working with swt on multiple architectures and operating systems with maven profiles.">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/Changelog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/INSTALL_RECEIPT.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/bin/ffmpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/bin/ffplay" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/bin/ffprobe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/bin/ffserver" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/avcodec.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/avfft.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/d3d11va.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/dv_profile.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/dxva2.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/old_codec_ids.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/qsv.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/vaapi.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/vda.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/vdpau.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/videotoolbox.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/vorbis_parser.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavcodec/xvmc.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavdevice/avdevice.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavdevice/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavfilter/asrc_abuffer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavfilter/avcodec.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavfilter/avfilter.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavfilter/avfiltergraph.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavfilter/buffersink.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavfilter/buffersrc.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavfilter/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavformat/avformat.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavformat/avio.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavformat/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavresample/avresample.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavresample/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/adler32.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/aes.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/attributes.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/audio_fifo.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/audioconvert.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/avassert.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/avconfig.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/avstring.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/avutil.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/base64.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/blowfish.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/bprint.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/bswap.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/buffer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/camellia.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/cast5.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/channel_layout.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/common.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/cpu.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/crc.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/dict.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/display.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/downmix_info.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/error.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/eval.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/ffversion.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/fifo.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/file.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/frame.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/hash.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/hmac.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/imgutils.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/intfloat.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/intreadwrite.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/lfg.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/log.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/lzo.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/macros.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/mathematics.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/md5.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/mem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/motion_vector.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/murmur3.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/old_pix_fmts.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/opt.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/parseutils.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/pixdesc.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/pixelutils.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/pixfmt.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/random_seed.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/rational.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/replaygain.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/ripemd.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/samplefmt.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/sha.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/sha512.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/stereo3d.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/tea.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/threadmessage.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/time.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/timecode.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/timestamp.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/twofish.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libavutil/xtea.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libpostproc/postprocess.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libpostproc/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libswresample/swresample.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libswresample/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libswscale/swscale.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/include/libswscale/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavcodec.56.60.100.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavcodec.56.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavcodec.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavcodec.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavdevice.56.4.100.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavdevice.56.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavdevice.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavdevice.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavfilter.5.40.101.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavfilter.5.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavfilter.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavfilter.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavformat.56.40.101.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavformat.56.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavformat.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavformat.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavresample.2.1.0.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavresample.2.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavresample.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavresample.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavutil.54.31.100.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavutil.54.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavutil.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libavutil.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libpostproc.53.3.100.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libpostproc.53.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libpostproc.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libpostproc.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libswresample.1.2.101.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libswresample.1.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libswresample.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libswresample.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libswscale.3.1.101.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libswscale.3.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libswscale.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/libswscale.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libavcodec.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libavdevice.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libavfilter.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libavformat.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libavresample.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libavutil.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libpostproc.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libswresample.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/lib/pkgconfig/libswscale.pc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/developer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/faq.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/fate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-all.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-bitstream-filters.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-codecs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-devices.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-filters.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-formats.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-protocols.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-resampler.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-scaler.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg-utils.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffmpeg.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffplay-all.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffplay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffprobe-all.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffprobe.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffserver-all.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/ffserver.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/general.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/git-howto.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/libavcodec.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/libavdevice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/libavfilter.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/libavformat.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/libavutil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/libswresample.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/libswscale.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/nut.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/doc/ffmpeg/platform.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/avio_dir_cmd.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/avio_reading.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/decoding_encoding.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/demuxing_decoding.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/extract_mvs.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/filter_audio.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/filtering_audio.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/filtering_video.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/http_multiclient.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/metadata.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/muxing.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/qsvdec.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/remuxing.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/resampling_audio.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/scaling_video.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/transcode_aac.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/examples/transcoding.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/ffprobe.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/libvpx-1080p.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/libvpx-1080p50_60.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/libvpx-360p.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/libvpx-720p.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/darwin/ffmpeg/share/ffmpeg/libvpx-720p50_60.ffpreset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/rtsp-simple-server.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/server.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/test.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/swt_darwin.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/swt_linux.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/swt_win32.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/zips/swt-3.5-cocoa-macosx.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/zips/swt-3.5-gtk-linux-x86.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/zips/swt-3.5-win32-win32-x86.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Net.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Net.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,18 +251,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="uk.co.therhys.JYT.JYT" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
@@ -110,7 +291,8 @@
       <updated>1654616010572</updated>
       <workItem from="1654616012559" duration="2786000" />
       <workItem from="1654618829011" duration="10666000" />
-      <workItem from="1654678739573" duration="14481000" />
+      <workItem from="1654678739573" duration="22580000" />
+      <workItem from="1654790303732" duration="2289000" />
     </task>
     <task id="LOCAL-00001" summary="Working with awt.">
       <created>1654680838276</created>
@@ -119,11 +301,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654680838276</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Working with swt on multiple architectures and operating systems with maven profiles.">
+      <created>1654699184129</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654699184129</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -139,6 +331,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Working with awt." />
-    <option name="LAST_COMMIT_MESSAGE" value="Working with awt." />
+    <MESSAGE value="Working with swt on multiple architectures and operating systems with maven profiles." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working with swt on multiple architectures and operating systems with maven profiles." />
   </component>
 </project>

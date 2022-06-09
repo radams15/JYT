@@ -10,7 +10,13 @@ import uk.co.therhys.YT.Channel;
 import uk.co.therhys.YT.Config;
 import uk.co.therhys.YT.Video;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public class MainFrame {
@@ -41,6 +47,14 @@ public class MainFrame {
         return btn;
     }
 
+    private static String urlEncode(String value) {
+        try {
+            return URLEncoder.encode(value, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException(ex.getCause());
+        }
+    }
+
     private void setupActions(){
         playListener = new SelectionListener() {
             public void widgetSelected(SelectionEvent selectionEvent) {
@@ -50,7 +64,21 @@ public class MainFrame {
                 }
                 Video vid = (Video) items[0].getData();
 
-                System.out.println(vid.title);
+                String url = vid.getStream(conf).url;
+
+                url = "http://192.168.1.113:8080/stream?url="+urlEncode(url);
+
+                System.out.println(url);
+
+                try {
+                    String[] commands = new String[] {
+                            "ffplay", url
+                    };
+
+                    Process process = Runtime.getRuntime().exec(commands);
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
             }
 
             public void widgetDefaultSelected(SelectionEvent selectionEvent) {
@@ -108,20 +136,26 @@ public class MainFrame {
     }
 
     public MainFrame(Config conf){
+        this.conf = conf;
+
         display = new Display();
         shell = new Shell(display);
 
-        this.conf = conf;
-
         setupUI();
 
-        for(Video vid : conf.subscriptions.get(0).getVideos(conf)){
+        long start = System.currentTimeMillis();
+
+        for(Video vid : conf.getVideos(true)){
             TableItem itm = new TableItem(table, SWT.NONE);
+
             itm.setText(0, vid.title);
             itm.setText(1, vid.channel.getName());
             itm.setText(2, new Date((long)vid.published*1000).toString());
             itm.setData(vid);
         }
+
+        System.out.println("Got videos in " + (System.currentTimeMillis() - start) + " ms");
+
         for(int i=0 ; i<3 ; i++){
             table.getColumn(i).pack();
         }

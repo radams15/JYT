@@ -42,14 +42,36 @@ public class Config {
         }
     }
 
-    public List<Video> getVideos(){
+    public List<Video> getVideos(boolean useThreading) {
         ArrayList<Video> out = new ArrayList<Video>();
 
-        for(Channel channel : subscriptions){
-            out.addAll(
-                    channel.getVideos(this)
-            );
+
+        if(useThreading){
+            VidGetThread[] threads = new VidGetThread[subscriptions.size()];
+
+            for (int i=0 ; i<threads.length ; i++) {
+                threads[i] = new VidGetThread(this, subscriptions.get(i));
+                threads[i].start();
+            }
+
+            for (int i=0 ; i<threads.length ; i++) {
+                try {
+                    threads[i].join();
+
+                    out.addAll(threads[i].vids);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }else {
+            for (Channel channel : subscriptions) {
+                out.addAll(
+                        channel.getVideos(this)
+                );
+            }
         }
+
+
 
         Collections.sort(out, new Comparator<Video>() {
             public int compare(Video v1, Video v2) {
@@ -63,6 +85,10 @@ public class Config {
         });
 
         return out;
+    }
+
+    public List<Video> getVideos(){
+        return getVideos(true);
     }
 
     public void save(){

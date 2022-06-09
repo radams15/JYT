@@ -129,6 +129,6 @@ public class Net {
     }
 
     public String get(String requestURL){
-        return urlGet(requestURL);
+        return urlGet(requestURL).replaceAll("[^\\x20-\\x7e]", "");
     }
 }
