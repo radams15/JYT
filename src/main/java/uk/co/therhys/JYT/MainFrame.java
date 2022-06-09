@@ -1,174 +1,99 @@
 package uk.co.therhys.JYT;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.*;
-import uk.co.therhys.YT.Channel;
 import uk.co.therhys.YT.Config;
 import uk.co.therhys.YT.Video;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
-public class MainFrame {
+public class MainFrame extends JFrame {
     private Config conf;
-    private Display display;
-    private Shell shell;
 
-    private Table table;
+    private DefaultTableModel tableModel;
+    private JTable table;
 
-    private SelectionListener playListener;
+    private ActionListener playListener;
 
-    private ToolItem newToolButton(ToolBar bar, String title, String img, SelectionListener listener){
-        ToolItem btn = new ToolItem(bar, SWT.PUSH);
-        btn.setText(title);
+    private static JButton newToolButton(String title, String img, ActionListener listener){
+        JButton btn = new JButton(title);
 
-        Image icon;
+        ImageIcon icon;
         try{
             URL url = ClassLoader.getSystemClassLoader().getResource(img);
-            icon = new Image(display, url.openStream());
+            icon = new ImageIcon(url);
         }catch(Exception e){
-            icon = new Image(display, "src/main/resources/"+img);
+            icon = new ImageIcon("src/main/resources/"+img);
         }
 
-        btn.setImage(icon);
+        btn.setIcon(icon);
 
-        btn.addSelectionListener(listener);
+        btn.addActionListener(listener);
 
         return btn;
     }
 
-    private static String urlEncode(String value) {
-        try {
-            return URLEncoder.encode(value, "UTF-8");
-        } catch (UnsupportedEncodingException ex) {
-            throw new RuntimeException(ex.getCause());
-        }
-    }
-
     private void setupActions(){
-        playListener = new SelectionListener() {
-            public void widgetSelected(SelectionEvent selectionEvent) {
-                TableItem[] items = table.getSelection();
-                if(items.length != 1){
-                    return;
-                }
-                Video vid = (Video) items[0].getData();
+        playListener = new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                int row = table.getSelectedRow();
 
-                String url = vid.getStream(conf).url;
+                Video vid = (Video) tableModel.getValueAt(row, 3);
 
-                url = "http://192.168.1.113:8080/stream?url="+urlEncode(url);
-
-                System.out.println(url);
-
-                try {
-                    String[] commands = new String[] {
-                            "ffplay", url
-                    };
-
-                    Process process = Runtime.getRuntime().exec(commands);
-                }catch(IOException e){
-                    e.printStackTrace();
-                }
-            }
-
-            public void widgetDefaultSelected(SelectionEvent selectionEvent) {
-
+                System.out.println(vid.title);
             }
         };
     }
 
     void setupToolbar(){
-        ToolBar toolbar = shell.getToolBar();
-        if(toolbar == null){
-            toolbar = new ToolBar(shell, SWT.HORIZONTAL);
-        }
-        toolbar.setSize(300, 70);
-        toolbar.setLocation(0, 0);
+        JToolBar toolbar = new JToolBar();
 
-        newToolButton(toolbar, "Play", "playpause.png", playListener);
+        toolbar.add(newToolButton("Play", "playpause.png", playListener));
+
+        getContentPane().add(toolbar, BorderLayout.NORTH);
     }
 
     void setupMenubar(){
-        Menu menuBar = shell.getMenu();
-        if(menuBar == null){
-            menuBar = new Menu(shell, SWT.BAR);
-        }
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
 
-        MenuItem video = new MenuItem(menuBar, SWT.CASCADE);
-        video.setText("Video");
-        Menu videoMenu = new Menu(shell, SWT.DROP_DOWN);
-        video.setMenu(videoMenu);
+        JMenu videoMenu = new JMenu("Video");
+        menuBar.add(videoMenu);
 
-        MenuItem playMenu = new MenuItem(videoMenu, SWT.PUSH);
-        playMenu.setText("Play\tCTRL+P");
-        playMenu.setAccelerator(SWT.CTRL+'P');
-        playMenu.addSelectionListener(playListener);
-
-        shell.setMenuBar(menuBar);
+        videoMenu.add("Play").addActionListener(playListener);
     }
 
     private void setupUI(){
-        shell.setSize(800, 600);
-        shell.setLayout(new GridLayout(1, true));
+        setSize(800, 600);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+        BorderLayout layout = new BorderLayout();
+        getContentPane().setLayout(layout);
+
+        table = new JTable(new DefaultTableModel(new Object[]{"Title", "Channel", "Published", "Obj"}, 0));
+        JScrollPane scrollPane = new JScrollPane(table);
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
+        tableModel = (DefaultTableModel) table.getModel();
+
+        table.getColumnModel().removeColumn(table.getColumnModel().getColumn(3));
 
         setupActions();
         setupToolbar();
         setupMenubar();
-
-        table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION | SWT.RESIZE | SWT.V_SCROLL | SWT.H_SCROLL);
-        table.setLinesVisible(true);
-        table.setHeaderVisible(true);
-
-        String[] titles = new String[]{"Title", "Channel", "Published"};
-        for(int i=0 ; i<titles.length ; i++){
-            new TableColumn(table, SWT.NONE).setText(titles[i]);
-        }
     }
 
     public MainFrame(Config conf){
         this.conf = conf;
 
-        display = new Display();
-        shell = new Shell(display);
-
         setupUI();
 
-        long start = System.currentTimeMillis();
-
-        for(Video vid : conf.getVideos(true)){
-            TableItem itm = new TableItem(table, SWT.NONE);
-
-            itm.setText(0, vid.title);
-            itm.setText(1, vid.channel.getName());
-            itm.setText(2, new Date((long)vid.published*1000).toString());
-            itm.setData(vid);
+        for(Video vid : conf.getVideos()){
+            tableModel.addRow(new Object[]{vid.title, vid.channel.getName(), new Date((long)vid.published*1000), vid});
         }
-
-        System.out.println("Got videos in " + (System.currentTimeMillis() - start) + " ms");
-
-        for(int i=0 ; i<3 ; i++){
-            table.getColumn(i).pack();
-        }
-
-
-        shell.pack();
-        shell.open();
-
-        while (!shell.isDisposed()) {
-            if (!display.readAndDispatch()) {
-                display.sleep();
-            }
-        }
-        display.dispose();
     }
 }
