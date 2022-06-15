@@ -27,6 +27,8 @@ public class Config {
         conf.refreshSubs();
         conf.saveFile = configFile;
 
+        conf.quality = 360;
+
         return conf;
     }
 

@@ -10,19 +10,18 @@ import uk.co.therhys.YT.Channel;
 import uk.co.therhys.YT.Config;
 import uk.co.therhys.YT.Video;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.net.Socket;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public class MainFrame {
     private Config conf;
     private Display display;
     private Shell shell;
+
+    private DataOutputStream controllerOut;
 
     private Table table;
 
@@ -63,14 +62,11 @@ public class MainFrame {
                     return;
                 }
                 Video vid = (Video) items[0].getData();
-
                 String url = vid.getStream(conf).url;
-
-                url = "http://192.168.1.113:8080/stream?url="+urlEncode(url);
 
                 System.out.println(url);
 
-                try {
+                /*try {
                     String[] commands = new String[] {
                             "ffplay", url
                     };
@@ -78,7 +74,7 @@ public class MainFrame {
                     Process process = Runtime.getRuntime().exec(commands);
                 }catch(IOException e){
                     e.printStackTrace();
-                }
+                }*/
             }
 
             public void widgetDefaultSelected(SelectionEvent selectionEvent) {
