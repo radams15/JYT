@@ -23,16 +23,20 @@ public class Video {
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        StreamResp resp = gson.fromJson(data, StreamResp.class);
+        StreamResp resp = (StreamResp) gson.fromJson(data, StreamResp.class);
 
-        for(Stream stream : resp.formatStreams){
+        for(int i=0 ; i<resp.formatStreams.length ; i++){
+            Stream stream = resp.formatStreams[i];
+
             int res = Integer.parseInt(stream.resolution.substring(0, stream.resolution.indexOf("p")));
             if(res == conf.quality){
                 return stream;
             }
         }
 
-        for(Stream stream : resp.formatStreams){
+        for(int i=0 ; i<resp.formatStreams.length ; i++){
+            Stream stream = resp.formatStreams[i];
+
             int res = Integer.parseInt(stream.resolution.substring(0, stream.resolution.indexOf("p")));
             if(res >= conf.quality){
                 return stream;

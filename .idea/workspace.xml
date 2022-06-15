@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Working on OSX by stealing executables from PPCMC.">
-      <change afterPath="$PROJECT_DIR$/JYT.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/UnifiedToolBtn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/UnifiedToolbarPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/JYT.icns" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/JYT.png" afterDir="false" />
+    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Working well, has now got temporary working zip.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Net.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Net.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Video.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655292775244</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Working well, has now got temporary working zip.">
+      <created>1655297046625</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655297046625</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +164,7 @@
     <MESSAGE value="Working with swt on multiple architectures and operating systems with maven profiles." />
     <MESSAGE value="Update to make look better." />
     <MESSAGE value="Working on OSX by stealing executables from PPCMC." />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on OSX by stealing executables from PPCMC." />
+    <MESSAGE value="Working well, has now got temporary working zip." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working well, has now got temporary working zip." />
   </component>
 </project>

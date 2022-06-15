@@ -6,7 +6,7 @@ public class VidGetThread extends Thread {
     private Channel channel;
     private Config conf;
 
-    public List<Video> vids;
+    public List vids;
 
     public void run(){
         vids = channel.getVideos(conf);

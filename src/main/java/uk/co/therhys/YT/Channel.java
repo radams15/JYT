@@ -33,17 +33,17 @@ public class Channel {
         return "Unknown";
     }
 
-    public List<Video> getVideos(Config conf){
+    public List getVideos(Config conf){
         String vids = new Net().get(conf.instance + "/api/v1/channels/" + id);
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        ChannelResp root = gson.fromJson(vids, ChannelResp.class);
+        ChannelResp root = (ChannelResp) gson.fromJson(vids, ChannelResp.class);
 
         name = root.author;
 
-        for(Video vid : root.latestVideos){
-            vid.channel = this;
+        for(int i=0 ; i<root.latestVideos.length ; i++){
+            root.latestVideos[i].channel = this;
         }
 
         return Arrays.asList(root.latestVideos);

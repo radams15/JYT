@@ -12,10 +12,8 @@ import java.util.List;
 public class Config {
     int quality;
     String instance;
-    public String[] subs;
+    public Channel[] subscriptions;
     public transient String saveFile;
-
-    public ArrayList<Channel> subscriptions;
 
     public static Config fromFile(String configFile){
         String config = FileUtils.readFile(new File(configFile));
@@ -23,8 +21,8 @@ public class Config {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
-        Config conf = gson.fromJson(config, Config.class);
-        conf.refreshSubs();
+        Config conf = (Config) gson.fromJson(config, Config.class);
+        //conf.refreshSubs();
         conf.saveFile = configFile;
 
         return conf;
@@ -32,25 +30,25 @@ public class Config {
 
     public Config(){}
 
-    public void refreshSubs(){
+    /*public void refreshSubs(){
         if(subscriptions == null) {
-            subscriptions = new ArrayList<Channel>();
+            subscriptions = new ArrayList();
 
-            for (String sub : subs) {
-                subscriptions.add(new Channel(sub));
+            for (int i=0 ; i<subs.length ; i++) {
+                subscriptions.add(new Channel(subs[i]));
             }
         }
-    }
+    }*/
 
-    public List<Video> getVideos(boolean useThreading) {
-        ArrayList<Video> out = new ArrayList<Video>();
+    public List getVideos(boolean useThreading) {
+        ArrayList out = new ArrayList();
 
 
         if(useThreading){
-            VidGetThread[] threads = new VidGetThread[subscriptions.size()];
+            VidGetThread[] threads = new VidGetThread[subscriptions.length];
 
             for (int i=0 ; i<threads.length ; i++) {
-                threads[i] = new VidGetThread(this, subscriptions.get(i));
+                threads[i] = new VidGetThread(this, (Channel) subscriptions[i]);
                 threads[i].start();
             }
 
@@ -64,17 +62,17 @@ public class Config {
                 }
             }
         }else {
-            for (Channel channel : subscriptions) {
+            for (int i=0 ; i<subscriptions.length ; i++) {
                 out.addAll(
-                        channel.getVideos(this)
+                        ((Channel) subscriptions[i]).getVideos(this)
                 );
             }
         }
 
-
-
-        Collections.sort(out, new Comparator<Video>() {
-            public int compare(Video v1, Video v2) {
+        Collections.sort(out, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Video v1 = (Video) o1;
+                Video v2 = (Video) o2;
                 if (v1.published == v2.published) {
                     return 0;
                 } else if (v1.published < v2.published) {
@@ -87,7 +85,7 @@ public class Config {
         return out;
     }
 
-    public List<Video> getVideos(){
+    public List getVideos(){
         return getVideos(true);
     }
 

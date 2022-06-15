@@ -9,7 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.Date;
+import java.util.*;
+import java.util.List;
 
 public class MainFrame extends JFrame {
     private Config conf;
@@ -110,7 +111,10 @@ public class MainFrame extends JFrame {
 
         setupUI();
 
-        for(Video vid : conf.getVideos()){
+        List videos = conf.getVideos();
+        for(int i=0 ; i<videos.size() ; i++){
+            Video vid = (Video) videos.get(i);
+
             tableModel.addRow(new Object[]{vid.title, vid.channel.getName(), new Date((long)vid.published*1000), vid});
         }
     }
