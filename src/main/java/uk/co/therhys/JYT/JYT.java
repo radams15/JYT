@@ -37,12 +37,13 @@ public class JYT {
             e.printStackTrace();
         }
 
-        String savePath = "yt_saves.json.small";
+        String savePath = "yt_saves.json";
+        String username = System.getProperty("user.name");
 
         if(os.equals("Linux")){
-            savePath = "/home/rhys/.config/" + savePath;
+            savePath = "/home/" + username + "/.config/" + savePath;
         }else if(os.equals("Mac OS X")){
-            savePath = "/Users/rhys/Library/" + savePath;
+            savePath = "/Users/" + username + "/Library/" + savePath;
         }else{
             savePath = "" + savePath;
         }

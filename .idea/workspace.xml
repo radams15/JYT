@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Update to make look better.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoPlayer.java" afterDir="false" />
+    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Working on OSX by stealing executables from PPCMC.">
+      <change afterPath="$PROJECT_DIR$/JYT.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/UnifiedToolBtn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/UnifiedToolbarPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JYT.icns" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JYT.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654792664609</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Working on OSX by stealing executables from PPCMC.">
+      <created>1655292775244</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655292775244</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +158,7 @@
     <MESSAGE value="Working with awt." />
     <MESSAGE value="Working with swt on multiple architectures and operating systems with maven profiles." />
     <MESSAGE value="Update to make look better." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update to make look better." />
+    <MESSAGE value="Working on OSX by stealing executables from PPCMC." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on OSX by stealing executables from PPCMC." />
   </component>
 </project>

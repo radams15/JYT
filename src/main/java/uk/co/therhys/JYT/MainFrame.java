@@ -8,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.Date;
 
@@ -17,12 +16,11 @@ public class MainFrame extends JFrame {
 
     private DefaultTableModel tableModel;
     private JTable table;
+    private JPanel mainPanel;
 
     private ActionListener playListener;
 
-    private static JButton newToolButton(String title, String img, ActionListener listener){
-        JButton btn = new JButton(title);
-
+    private static ImageIcon getIcon(String img){
         ImageIcon icon;
         try{
             URL url = ClassLoader.getSystemClassLoader().getResource(img);
@@ -31,7 +29,13 @@ public class MainFrame extends JFrame {
             icon = new ImageIcon("src/main/resources/"+img);
         }
 
-        btn.setIcon(icon);
+        return icon;
+    }
+
+    private static JButton newToolButton(String title, String img, ActionListener listener){
+        JButton btn = new UnifiedToolBtn(title);
+
+        btn.setIcon(getIcon(img));
 
         btn.addActionListener(listener);
 
@@ -58,10 +62,11 @@ public class MainFrame extends JFrame {
 
     void setupToolbar(){
         JToolBar toolbar = new JToolBar();
+        toolbar.setFloatable(false);
 
         toolbar.add(newToolButton("Play", "playpause.png", playListener));
 
-        getContentPane().add(toolbar, BorderLayout.NORTH);
+        mainPanel.add(toolbar, BorderLayout.NORTH);
     }
 
     void setupMenubar(){
@@ -78,12 +83,17 @@ public class MainFrame extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
+        mainPanel = new UnifiedToolbarPanel(new BorderLayout());
+        setContentPane(mainPanel);
+
+        getRootPane().putClientProperty("apple.awt.brushMetalLook", Boolean.TRUE);
+
         BorderLayout layout = new BorderLayout();
-        getContentPane().setLayout(layout);
+        mainPanel.setLayout(layout);
 
         table = new JTable(new DefaultTableModel(new Object[]{"Title", "Channel", "Published", "Obj"}, 0));
         JScrollPane scrollPane = new JScrollPane(table);
-        getContentPane().add(scrollPane, BorderLayout.CENTER);
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
         tableModel = (DefaultTableModel) table.getModel();
 
         table.getColumnModel().removeColumn(table.getColumnModel().getColumn(3));
@@ -95,6 +105,8 @@ public class MainFrame extends JFrame {
 
     public MainFrame(Config conf){
         this.conf = conf;
+
+        setIconImage(getIcon("JYT.png").getImage());
 
         setupUI();
 
