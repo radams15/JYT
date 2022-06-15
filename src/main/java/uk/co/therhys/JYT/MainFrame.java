@@ -5,10 +5,10 @@ import uk.co.therhys.YT.Video;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Date;
 
@@ -38,6 +38,10 @@ public class MainFrame extends JFrame {
         return btn;
     }
 
+    private void playStream(Video.Stream stream){
+        new VideoPlayer(stream).start();
+    }
+
     private void setupActions(){
         playListener = new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
@@ -45,7 +49,9 @@ public class MainFrame extends JFrame {
 
                 Video vid = (Video) tableModel.getValueAt(row, 3);
 
-                System.out.println(vid.title);
+                Video.Stream stream = vid.getStream(conf);
+
+                playStream(stream);
             }
         };
     }
