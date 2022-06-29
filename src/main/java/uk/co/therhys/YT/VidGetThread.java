@@ -5,15 +5,15 @@ import java.util.List;
 public class VidGetThread extends Thread {
     private Channel channel;
     private Config conf;
-
-    public List vids;
+    private VidListener listener;
 
     public void run(){
-        vids = channel.getVideos(conf);
+        channel.getVideos(conf, listener);
     }
 
-    public VidGetThread(Config conf, Channel channel){
+    public VidGetThread(Config conf, Channel channel, VidListener listener){
         this.conf = conf;
         this.channel = channel;
+        this.listener = listener;
     }
 }

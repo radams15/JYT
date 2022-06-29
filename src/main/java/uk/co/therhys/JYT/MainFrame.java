@@ -1,6 +1,8 @@
 package uk.co.therhys.JYT;
 
+import uk.co.therhys.YT.Channel;
 import uk.co.therhys.YT.Config;
+import uk.co.therhys.YT.VidListener;
 import uk.co.therhys.YT.Video;
 
 import javax.swing.*;
@@ -12,12 +14,15 @@ import java.util.List;
 
 import apple.dts.samplecode.osxadapter.OSXAdapter;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements VidListener {
     private Config conf;
 
     private VideoTable table;
+    private VideoTableModel tableModel;
     private JPanel mainPanel;
 
+    private ActionListener goChannelListener;
+    private ActionListener searchListener;
     private ActionListener playListener;
     private ActionListener preferencesListener;
     private ActionListener quitListener;
@@ -54,6 +59,44 @@ public class MainFrame extends JFrame {
     private void setupActions(){
 
         final MainFrame frameRef = this;
+
+
+        searchListener = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                final String query = JOptionPane.showInputDialog("Query");
+
+                if(query != null && !query.equals("")){
+                    tableModel.clear();
+
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            frameRef.conf.search(query, 1, frameRef);
+                        }
+                    });
+                }
+            }
+        };
+
+        goChannelListener = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                GoChannelDlg dlg = new GoChannelDlg(conf);
+
+                dlg.setModal(true);
+                dlg.setVisible(true);
+
+                final Channel channel = dlg.getSelected();
+
+                if(channel != null) {
+                    tableModel.clear();
+
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            channel.getVideos(conf, frameRef);
+                        }
+                    });
+                }
+            }
+        };
 
         playListener = new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
@@ -106,6 +149,8 @@ public class MainFrame extends JFrame {
 
         toolbar.add(newToolButton("Play", "play.png", playListener));
         toolbar.add(newToolButton("Preferences", "preferences.png", preferencesListener));
+        toolbar.add(newToolButton("Search", "search.png", searchListener));
+        toolbar.add(newToolButton("Channels", "go.png", goChannelListener));
 
         mainPanel.add(toolbar, BorderLayout.NORTH);
     }
@@ -129,6 +174,12 @@ public class MainFrame extends JFrame {
         menuBar.add(videoMenu);
 
         videoMenu.add("Play").addActionListener(playListener);
+        videoMenu.add("Search").addActionListener(searchListener);
+
+        JMenu channelMenu = new JMenu("Channel");
+        menuBar.add(channelMenu);
+
+        channelMenu.add("Go").addActionListener(goChannelListener);
     }
 
     private void setupUI(){
@@ -147,6 +198,8 @@ public class MainFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(table);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
 
+        tableModel = (VideoTableModel) table.getModel();
+
         setupActions();
         setupToolbar();
         setupMenubar();
@@ -163,11 +216,22 @@ public class MainFrame extends JFrame {
 
         setupUI();
 
-        List videos = conf.getVideos();
-        for(int i=0 ; i<videos.size() ; i++){
-            Video vid = (Video) videos.get(i);
+        setVisible(true);
 
-            table.addVideo(vid);
-        }
+        final MainFrame frameRef = this;
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                frameRef.conf.getVideos(frameRef);
+            }
+        });
+    }
+
+    public void vidFetchCompleted(){
+        tableModel.sort();
+    }
+
+
+    public void getVideo(Video video) {
+        table.addVideo(video);
     }
 }

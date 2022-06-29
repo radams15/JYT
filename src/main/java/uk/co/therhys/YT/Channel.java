@@ -33,7 +33,7 @@ public class Channel {
         return "Unknown";
     }
 
-    public List getVideos(Config conf){
+    public void getVideos(Config conf, VidListener listener){
         String vids = Net.filterUnicode(Net.getInstance().get(conf.instance + "/api/v1/channels/" + id));
 
         GsonBuilder builder = new GsonBuilder();
@@ -46,6 +46,9 @@ public class Channel {
             root.latestVideos[i].channel = this;
         }
 
-        return Arrays.asList(root.latestVideos);
+        for(int i=0 ; i<root.latestVideos.length ; i++){
+            listener.getVideo(root.latestVideos[i]);
+        }
+        listener.vidFetchCompleted();
     }
 }
