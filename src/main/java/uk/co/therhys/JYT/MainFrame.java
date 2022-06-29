@@ -4,22 +4,26 @@ import uk.co.therhys.YT.Config;
 import uk.co.therhys.YT.Video;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.*;
 import java.util.List;
+
+import apple.dts.samplecode.osxadapter.OSXAdapter;
 
 public class MainFrame extends JFrame {
     private Config conf;
 
-    private DefaultTableModel tableModel;
-    private JTable table;
+    private VideoTable table;
     private JPanel mainPanel;
 
     private ActionListener playListener;
+    private ActionListener preferencesListener;
+    private ActionListener quitListener;
+    private ActionListener aboutListener;
+
+    private final boolean isOsx = (System.getProperty("os.name").toLowerCase().startsWith("mac os x"));
 
     private static ImageIcon getIcon(String img){
         ImageIcon icon;
@@ -48,24 +52,60 @@ public class MainFrame extends JFrame {
     }
 
     private void setupActions(){
+
+        final MainFrame frameRef = this;
+
         playListener = new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 int row = table.getSelectedRow();
 
-                Video vid = (Video) tableModel.getValueAt(row, 3);
+                Video vid = (Video) table.getVideo(row);
 
                 Video.Stream stream = vid.getStream(conf);
 
                 playStream(stream);
             }
         };
+
+        preferencesListener = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                SettingsDialog settingsDlg = new SettingsDialog(frameRef, conf);
+                settingsDlg.setVisible(true);
+
+                settingsDlg.save();
+            }
+        };
+
+        aboutListener = new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                JDialog dialog = new JDialog();
+                dialog.setSize(300, 150);
+
+                dialog.add(new JLabel("JReddit - by Rhys Adams"));
+                dialog.setVisible(true);
+            }
+        };
+
+        quitListener = new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                System.out.println("Quit");
+                frameRef.dispose();
+            }
+        };
+
+        if(isOsx){
+            OSXAdapter.setQuitHandler(this, quitListener);
+            OSXAdapter.setAboutHandler(this, aboutListener);
+            OSXAdapter.setPreferencesHandler(this, preferencesListener);
+        }
     }
 
     void setupToolbar(){
         JToolBar toolbar = new JToolBar();
         toolbar.setFloatable(false);
 
-        toolbar.add(newToolButton("Play", "playpause.png", playListener));
+        toolbar.add(newToolButton("Play", "play.png", playListener));
+        toolbar.add(newToolButton("Preferences", "preferences.png", preferencesListener));
 
         mainPanel.add(toolbar, BorderLayout.NORTH);
     }
@@ -73,6 +113,17 @@ public class MainFrame extends JFrame {
     void setupMenubar(){
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
+
+        if(!isOsx) {
+            JMenu fileMenu = new JMenu("File");
+            menuBar.add(fileMenu);
+            fileMenu.add("Quit").addActionListener(quitListener);
+
+            JMenu editMenu = new JMenu("Edit");
+            menuBar.add(editMenu);
+
+            editMenu.add("Settings").addActionListener(preferencesListener);
+        }
 
         JMenu videoMenu = new JMenu("Video");
         menuBar.add(videoMenu);
@@ -92,12 +143,9 @@ public class MainFrame extends JFrame {
         BorderLayout layout = new BorderLayout();
         mainPanel.setLayout(layout);
 
-        table = new JTable(new DefaultTableModel(new Object[]{"Title", "Channel", "Published", "Obj"}, 0));
+        table = new VideoTable();
         JScrollPane scrollPane = new JScrollPane(table);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
-        tableModel = (DefaultTableModel) table.getModel();
-
-        table.getColumnModel().removeColumn(table.getColumnModel().getColumn(3));
 
         setupActions();
         setupToolbar();
@@ -107,7 +155,11 @@ public class MainFrame extends JFrame {
     public MainFrame(Config conf){
         this.conf = conf;
 
-        setIconImage(getIcon("JYT.png").getImage());
+        Image appIcon = getIcon("JYT.png").getImage();
+        setIconImage(appIcon);
+        if(isOsx){
+            OSXAdapter.setApplicationIcon(this, appIcon);
+        }
 
         setupUI();
 
@@ -115,7 +167,7 @@ public class MainFrame extends JFrame {
         for(int i=0 ; i<videos.size() ; i++){
             Video vid = (Video) videos.get(i);
 
-            tableModel.addRow(new Object[]{vid.title, vid.channel.getName(), new Date((long)vid.published*1000), vid});
+            table.addVideo(vid);
         }
     }
 }

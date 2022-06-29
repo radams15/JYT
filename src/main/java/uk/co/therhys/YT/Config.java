@@ -2,6 +2,9 @@ package uk.co.therhys.YT;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,8 +13,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Config {
-    int quality;
-    String instance;
+    public int quality;
+    public String instance;
     public Channel[] subscriptions;
     public transient String saveFile;
 
@@ -83,6 +86,49 @@ public class Config {
         });
 
         return out;
+    }
+
+    private static class SearchResp{
+
+    }
+
+    public List search(String query, int page){
+        String url = instance + "/api/v1/search?q=" + query + "&type=video&page=" + String.valueOf(page);
+
+        Result res = Net.getInstance().get(url);
+
+        ArrayList vids = new ArrayList();
+
+        if(res.hadError){
+            res.error.printStackTrace();
+            return vids;
+        }
+
+        JSONArray array = res.toJsonArray();
+
+        for(int i=0 ; i<array.length() ; i++){
+            try {
+                JSONObject vidObj = array.getJSONObject(i);
+
+                Channel channel = new Channel();
+                channel.id = vidObj.getString("authorId");
+                channel.name = vidObj.getString("author");
+
+                Video vid = new Video();
+                vid.channel = channel;
+                vid.title = vidObj.getString("title");
+                vid.videoId = vidObj.getString("videoId");
+                vid.published = vidObj.getInt("published");
+
+                vids.add(vid);
+
+                //vid.videoThumbnails = vidObj.getJSONArray("videoThumbnails"); // TODO fix this
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
+
+        return vids;
     }
 
     public List getVideos(){

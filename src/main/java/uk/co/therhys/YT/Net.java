@@ -1,68 +1,64 @@
 package uk.co.therhys.YT;
 
-import javax.net.ssl.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.Socket;
-import java.net.URL;
-import java.net.URLConnection;
-import java.security.*;
-import java.security.cert.X509Certificate;
+import uk.co.therhys.JYT.OS;
+
+import java.io.File;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
 
 public class Net {
-    private String urlGet(String requestURL){
-        try {
-            URL url = new URL(requestURL);
-            URLConnection conn = url.openConnection();
-            // fake request coming from browser
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB;     rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 (.NET CLR 3.5.30729)");
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+    private static Net instance;
 
-            StringBuffer out = new StringBuffer();
-            String f;
-            while(true) {
-                f = in.readLine();
-                if(f == null) break;
-                out.append(f);
-            }
-
-            in.close();
-
-            return out.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "Error!";
+    public Result post_auth(String urlStr, String data, HashMap headers, String username, String password){
+        throw new RuntimeException("Net unimplemented!");
     }
 
-    private String curlGet(String requestURL){
-        try {
-            String[] commands = new String[] {
-                "curl", "-k", "-X", "GET", requestURL
-            };
-
-            Process process = Runtime.getRuntime().exec(commands);
-            BufferedReader reader = new BufferedReader(new
-                    InputStreamReader(process.getInputStream()));
-            String line;
-            StringBuffer response = new StringBuffer();
-            while ((line = reader.readLine()) != null) {
-                response.append(line);
-            }
-
-            return response.toString();
-
-        }catch(IOException e){
-            e.printStackTrace();
-            return "";
-        }
+    public Result get(String urlStr, HashMap headers){
+        throw new RuntimeException("Net unimplemented!");
     }
 
-    public String get(String requestURL){
-        return urlGet(requestURL).replaceAll("[^\\x20-\\x7e]", "");
+    public static String filterUnicode(Result result){
+        StringBuffer out = new StringBuffer();
+
+        for(int i=0 ; i<result.length ; i++){
+            if(result.data[i] < 127){
+                out.append((char) result.data[i]);
+            }
+        }
+
+        return out.toString();
+    }
+
+    public Result get(String urlStr){
+        return get(urlStr, new HashMap());
+    }
+
+    public boolean download(String urlStr, HashMap headers, String outPath){
+        Result data = get(urlStr, headers);
+
+        if(data.hadError){
+            data.error.printStackTrace();
+            return true;
+        }
+
+        FileUtils.writeFile(new File(outPath), data.data);
+
+        return false;
+    }
+
+    public static Net getInstance(){
+        if(instance == null){
+            instance = newNet();
+        }
+
+        return instance;
+    }
+
+    private static Net newNet(){
+        if(OS.getOS() == OS.OSX && ! OS.versionAbove("10.6")){ // If OSX < snow leopard use the library (ppc)
+            return new UrlNet(); // TODO fix on PowerPC
+        }else{
+            return new UrlNet();
+        }
     }
 }

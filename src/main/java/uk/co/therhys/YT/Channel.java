@@ -34,7 +34,7 @@ public class Channel {
     }
 
     public List getVideos(Config conf){
-        String vids = new Net().get(conf.instance + "/api/v1/channels/" + id);
+        String vids = Net.filterUnicode(Net.getInstance().get(conf.instance + "/api/v1/channels/" + id));
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();

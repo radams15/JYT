@@ -1,4 +1,5 @@
 package uk.co.therhys.JYT;
+import apple.dts.samplecode.osxadapter.OSXAdapter;
 import uk.co.therhys.YT.Config;
 
 import javax.swing.*;
@@ -33,6 +34,9 @@ public class JYT {
         try{
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             System.setProperty("com.apple.mrj.application.apple.menu.about.name", "JMD");
+            System.setProperty("com.apple.mrj.application.growbox.intrudes", "false");
+
+            OSXAdapter.init();
         } catch(Exception e){
             e.printStackTrace();
         }

@@ -4,20 +4,31 @@ import java.io.*;
 
 public class FileUtils {
 
-    static String readFile(File file){
-        String out;
+    public static byte[] readFileBytes(File file){
+        byte[] out;
 
         try {
             FileInputStream is = new FileInputStream(file);
 
-            byte bytes[] = new byte[(int) file.length()];
+            out = new byte[(int) file.length()];
 
-            is.read(bytes);
-
-            out = new String(bytes, "UTF-8");
+            is.read(out);
 
             is.close();
         } catch (Exception e) {
+            e.printStackTrace();
+            out = null;
+        }
+
+        return out;
+    }
+
+    public static String readFile(File file){
+        String out;
+
+        try {
+            out = new String(readFileBytes(file), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
 
             out = "";
@@ -26,11 +37,11 @@ public class FileUtils {
         return out;
     }
 
-    static void writeFile(File file, String data){
+    public static void writeFile(File file, byte[] data){
         try {
             FileOutputStream writer = new FileOutputStream(file.getAbsolutePath());
 
-            writer.write(data.getBytes());
+            writer.write(data);
 
             writer.close();
         } catch (FileNotFoundException e) {
@@ -38,5 +49,20 @@ public class FileUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getExtension(String fileName){
+        int i = fileName.lastIndexOf('.');
+        int p = Math.max(fileName.lastIndexOf('/'), fileName.lastIndexOf('\\'));
+
+        if (i > p) {
+            return fileName.substring(i+1);
+        }
+
+        return "";
+    }
+
+    public static void writeFile(File file, String data){
+        writeFile(file, data.getBytes());
     }
 }

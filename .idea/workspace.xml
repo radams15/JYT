@@ -4,15 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Working well, has now got temporary working zip.">
+    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Transition ui to java 4 code - must convert JSON library to use org.json as GSON never supported java 4.">
+      <change afterPath="$PROJECT_DIR$/json-20070829.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/apple/dts/samplecode/osxadapter/OSXAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/ClearPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/ImageViewer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/OS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/SettingsDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/SizedLbl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoTableRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/._play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/._preferences.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/preferences.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/FileUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Net.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Net.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Video.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/playpause.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +78,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Volumes/share/scripts/java/JYT&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -91,6 +114,15 @@
       <workItem from="1654618829011" duration="10666000" />
       <workItem from="1654678739573" duration="22580000" />
       <workItem from="1654790303732" duration="2514000" />
+      <workItem from="1655316730068" duration="5973000" />
+      <workItem from="1655558950663" duration="7418000" />
+      <workItem from="1655630265344" duration="234000" />
+      <workItem from="1655651566802" duration="83000" />
+      <workItem from="1655754626023" duration="163000" />
+      <workItem from="1655754844459" duration="3536000" />
+      <workItem from="1656086596169" duration="2213000" />
+      <workItem from="1656257324691" duration="9000" />
+      <workItem from="1656518321884" duration="730000" />
     </task>
     <task id="LOCAL-00001" summary="Working with awt.">
       <created>1654680838276</created>
@@ -127,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655297046625</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Transition ui to java 4 code - must convert JSON library to use org.json as GSON never supported java 4.">
+      <created>1655299668247</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655299668247</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +204,7 @@
     <MESSAGE value="Update to make look better." />
     <MESSAGE value="Working on OSX by stealing executables from PPCMC." />
     <MESSAGE value="Working well, has now got temporary working zip." />
-    <option name="LAST_COMMIT_MESSAGE" value="Working well, has now got temporary working zip." />
+    <MESSAGE value="Transition ui to java 4 code - must convert JSON library to use org.json as GSON never supported java 4." />
+    <option name="LAST_COMMIT_MESSAGE" value="Transition ui to java 4 code - must convert JSON library to use org.json as GSON never supported java 4." />
   </component>
 </project>
