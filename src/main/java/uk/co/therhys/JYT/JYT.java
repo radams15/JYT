@@ -1,6 +1,8 @@
 package uk.co.therhys.JYT;
 import apple.dts.samplecode.osxadapter.OSXAdapter;
 import uk.co.therhys.YT.Config;
+import uk.co.therhys.YT.VidListener;
+import uk.co.therhys.YT.Video;
 
 import javax.swing.*;
 

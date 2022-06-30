@@ -1,21 +1,16 @@
 package uk.co.therhys.YT;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import uk.co.therhys.JYT.OS;
 
 import java.io.File;
 import java.util.HashMap;
 
 public class Video {
-    public String title;
-    public String videoId;
-    public long published;
-    public transient Channel channel;
-    public Thumbnail[] videoThumbnails;
-
     public static class Stream {
-        public String resolution;
+        public int resolution;
         public String url;
     }
 
@@ -26,8 +21,31 @@ public class Video {
         public int height;
     }
 
-    private static class StreamResp {
-        Stream[] formatStreams;
+    public String title;
+    public String videoId;
+    public long published;
+    public Channel channel;
+    public JSONArray thumbs;
+    public Thumbnail[] videoThumbnails;
+
+    public Thumbnail[] getThumbnails(){
+        Video.Thumbnail[] videoThumbnails = new Video.Thumbnail[thumbs.length()];
+
+        try {
+            for (int x = 0; x < thumbs.length(); x++) {
+                JSONObject thumb = thumbs.getJSONObject(x);
+
+                videoThumbnails[x] = new Video.Thumbnail();
+                videoThumbnails[x].height = thumb.getInt("height");
+                videoThumbnails[x].width = thumb.getInt("width");
+                videoThumbnails[x].url = thumb.getString("url");
+                videoThumbnails[x].quality = thumb.getString("quality");
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return videoThumbnails;
     }
 
     public Thumbnail getThumbnail(){
@@ -86,28 +104,50 @@ public class Video {
         }
     }
 
+    public Stream[] getStreams(Config conf){
+        Result ret = Net.getInstance().get(conf.instance + "/api/v1/videos/" + videoId);
 
-    public Stream getStream(Config conf){
-        String data = Net.filterUnicode(Net.getInstance().get(conf.instance + "/api/v1/videos/" + videoId));
+        try {
+            JSONObject root = ret.toJson();
+            JSONArray formatStreams = root.getJSONArray("formatStreams");
 
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        StreamResp resp = (StreamResp) gson.fromJson(data, StreamResp.class);
+            Stream[] out = new Stream[formatStreams.length()];
 
-        for(int i=0 ; i<resp.formatStreams.length ; i++){
-            Stream stream = resp.formatStreams[i];
+            for (int i = 0; i < formatStreams.length(); i++) {
+                JSONObject stream = formatStreams.getJSONObject(i);
 
-            int res = Integer.parseInt(stream.resolution.substring(0, stream.resolution.indexOf("p")));
-            if(res == conf.quality){
+                String resolutionStr = stream.getString("resolution");
+
+                int res = Integer.parseInt(resolutionStr.substring(0, resolutionStr.indexOf("p")));
+
+                out[i] = new Stream();
+                out[i].resolution = res;
+                out[i].url = stream.getString("url");
+            }
+
+            return out;
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return new Stream[0];
+    }
+
+    public Stream getStream(Config conf) {
+        Stream[] streams = getStreams(conf);
+
+        for (int i = 0; i < streams.length; i++) {
+            Stream stream = streams[i];
+
+            if (stream.resolution == conf.quality) {
                 return stream;
             }
         }
 
-        for(int i=0 ; i<resp.formatStreams.length ; i++){
-            Stream stream = resp.formatStreams[i];
+        for (int i = 0; i < streams.length; i++) {
+            Stream stream = streams[i];
 
-            int res = Integer.parseInt(stream.resolution.substring(0, stream.resolution.indexOf("p")));
-            if(res >= conf.quality){
+            if (stream.resolution >= conf.quality) {
                 return stream;
             }
         }

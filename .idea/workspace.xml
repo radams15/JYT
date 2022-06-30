@@ -4,19 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Added search function to backend, need to add to frontend.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/GoChannelDlg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/._search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/go.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/search.png" afterDir="false" />
+    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Can now search and view just one channel.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/VideoTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/3.4/swt_darwin.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/3.4/swt_linux.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/3.4/swt_win32.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/3.8/swt_darwin.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/3.8/swt_linux.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/3.8/swt_win32.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-cocoa-macosx.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-gtk-linux-x86.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-gtk-linux-x86_64.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-win32-win32-x86.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-cocoa-macosx.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-gtk-linux-x86_64.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-win32-win32-x86.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/3.5/swt_darwin-3.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/3.5/swt_darwin-3.5.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/3.8/swt_darwin-3.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/3.8/swt_darwin-3.8.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin/maven-metadata-local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.5/swt_linux-3.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.5/swt_linux-3.5.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.8/swt_linux-3.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.8/swt_linux-3.8.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/maven-metadata-local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.5/swt_win32-3.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.5/swt_win32-3.5.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.8/swt_win32-3.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.8/swt_win32-3.8.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/maven-metadata-local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/rtsp-simple-server.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/test.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Video.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +138,8 @@
       <workItem from="1656086596169" duration="2213000" />
       <workItem from="1656257324691" duration="9000" />
       <workItem from="1656518321884" duration="5094000" />
-      <workItem from="1656529729065" duration="465000" />
+      <workItem from="1656529729065" duration="526000" />
+      <workItem from="1656579967772" duration="2857000" />
     </task>
     <task id="LOCAL-00001" summary="Working with awt.">
       <created>1654680838276</created>
@@ -163,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656519123882</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Can now search and view just one channel.">
+      <created>1656530229418</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1656530229418</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +237,17 @@
     <MESSAGE value="Working well, has now got temporary working zip." />
     <MESSAGE value="Transition ui to java 4 code - must convert JSON library to use org.json as GSON never supported java 4." />
     <MESSAGE value="Added search function to backend, need to add to frontend." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added search function to backend, need to add to frontend." />
+    <MESSAGE value="Can now search and view just one channel." />
+    <option name="LAST_COMMIT_MESSAGE" value="Can now search and view just one channel." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

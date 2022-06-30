@@ -7,21 +7,12 @@
     <groupId>uk.co.therhys</groupId>
     <artifactId>JYT</artifactId>
     <version>0.5</version>
-
-    <repositories>
-        <repository>
-            <id>localrepo</id>
-            <name>Repository in project's lib dir</name>
-            <layout>default</layout>
-            <url>file:///${project.basedir}/localrepo</url>
-        </repository>
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
             </plugin>
 
             <plugin>
@@ -42,6 +33,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
 
                 <configuration>
                     <archive>
@@ -86,12 +78,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>1.1</version>
-        </dependency>
-
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>

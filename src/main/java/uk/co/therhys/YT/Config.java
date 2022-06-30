@@ -1,7 +1,5 @@
 package uk.co.therhys.YT;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,9 +7,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 public class Config {
     public int quality;
@@ -22,20 +17,36 @@ public class Config {
     public static Config fromFile(String configFile){
         String config = FileUtils.readFile(new File(configFile));
 
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
+        try {
+            JSONObject confData = new JSONObject(config);
 
-        Config conf = (Config) gson.fromJson(config, Config.class);
-        conf.saveFile = configFile;
+            Config conf = new Config();
+            conf.saveFile = configFile;
+            conf.quality = confData.getInt("quality");
+            conf.instance = confData.getString("instance");
+            JSONArray subs = confData.getJSONArray("subscriptions");
 
-        return conf;
+            conf.subscriptions = new Channel[subs.length()];
+            for(int i=0 ; i<subs.length() ; i++){
+                JSONObject sub = subs.getJSONObject(i);
+
+                conf.subscriptions[i] = new Channel();
+                conf.subscriptions[i].id = sub.getString("id");
+                conf.subscriptions[i].name = sub.getString("name");
+            }
+
+            return conf;
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public Config(){}
 
     public void getVideos(boolean useThreading, VidListener listener) {
         ArrayList out = new ArrayList();
-
 
         if(useThreading){
             VidGetThread[] threads = new VidGetThread[subscriptions.length];
@@ -91,9 +102,9 @@ public class Config {
                 vid.videoId = vidObj.getString("videoId");
                 vid.published = vidObj.getInt("published");
 
-                listener.getVideo(vid);
+                vid.thumbs = vidObj.getJSONArray("videoThumbnails");
 
-                //vid.videoThumbnails = vidObj.getJSONArray("videoThumbnails"); // TODO fix this
+                listener.getVideo(vid);
 
                 listener.vidFetchCompleted();
             }catch (JSONException e){
@@ -107,11 +118,31 @@ public class Config {
     }
 
     public void save(){
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
 
-        String out = gson.toJson(this);
+        try{
+            JSONObject out = new JSONObject();
 
-        FileUtils.writeFile(new File(saveFile), out);
+            out.put("quality", quality);
+            out.put("instance", instance);
+
+            JSONArray subs = new JSONArray();
+
+            for(int i=0 ; i<subscriptions.length ; i++){
+                JSONObject sub = new JSONObject();
+                sub.put("id", subscriptions[i].id);
+                sub.put("name", subscriptions[i].name);
+
+                subs.put(sub);
+            }
+
+            out.put("subscriptions", subs);
+
+            String outStr = out.toString(1);
+
+            FileUtils.writeFile(new File(saveFile), outStr);
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
     }
 }

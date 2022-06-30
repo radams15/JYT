@@ -1,23 +1,14 @@
 package uk.co.therhys.YT;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.Arrays;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Channel {
     public String id;
     public String name;
     public int subCount;
     public int videoCount;
-
-    private static class ChannelResp {
-        Video[] latestVideos;
-        String author;
-
-        public ChannelResp(){}
-    }
 
     public Channel(){}
 
@@ -34,21 +25,32 @@ public class Channel {
     }
 
     public void getVideos(Config conf, VidListener listener){
-        String vids = Net.filterUnicode(Net.getInstance().get(conf.instance + "/api/v1/channels/" + id));
+        Result res = Net.getInstance().get(conf.instance + "/api/v1/channels/" + id);
 
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        ChannelResp root = (ChannelResp) gson.fromJson(vids, ChannelResp.class);
+        try {
+            JSONObject root = res.toJson();
 
-        name = root.author;
+            name = root.getString("author");
 
-        for(int i=0 ; i<root.latestVideos.length ; i++){
-            root.latestVideos[i].channel = this;
+            JSONArray latestVideos = root.getJSONArray("latestVideos");
+
+            for (int i = 0; i < latestVideos.length(); i++) {
+                JSONObject vidObj = latestVideos.getJSONObject(i);
+
+                Video vid = new Video();
+                vid.channel = this;
+
+                vid.title = vidObj.getString("title");
+                vid.videoId = vidObj.getString("videoId");
+                vid.published = vidObj.getLong("published");
+
+                vid.thumbs = vidObj.getJSONArray("videoThumbnails");
+
+                listener.getVideo(vid);
+            }
+            listener.vidFetchCompleted();
+        }catch (JSONException e){
+            e.printStackTrace();
         }
-
-        for(int i=0 ; i<root.latestVideos.length ; i++){
-            listener.getVideo(root.latestVideos[i]);
-        }
-        listener.vidFetchCompleted();
     }
 }
