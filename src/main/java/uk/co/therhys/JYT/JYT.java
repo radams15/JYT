@@ -1,8 +1,6 @@
 package uk.co.therhys.JYT;
 import apple.dts.samplecode.osxadapter.OSXAdapter;
 import uk.co.therhys.YT.Config;
-import uk.co.therhys.YT.VidListener;
-import uk.co.therhys.YT.Video;
 
 import javax.swing.*;
 
@@ -55,6 +53,10 @@ public class JYT {
         }
 
         Config conf = Config.fromFile(savePath);
+        if(conf == null){
+            System.err.println("Could not load save file: " + savePath);
+            System.exit(1);
+        }
 
         MainFrame frame = new MainFrame(conf);
         frame.setVisible(true);

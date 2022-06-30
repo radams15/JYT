@@ -6,13 +6,12 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 public class Config {
     public int quality;
     public String instance;
     public Channel[] subscriptions;
-    public transient String saveFile;
+    public String saveFile;
 
     public static Config fromFile(String configFile){
         String config = FileUtils.readFile(new File(configFile));
@@ -46,8 +45,6 @@ public class Config {
     public Config(){}
 
     public void getVideos(boolean useThreading, VidListener listener) {
-        ArrayList out = new ArrayList();
-
         if(useThreading){
             VidGetThread[] threads = new VidGetThread[subscriptions.length];
 
@@ -77,7 +74,7 @@ public class Config {
             e.printStackTrace();
         }
 
-        String url = instance + "/api/v1/search?q=" + query + "&type=video&page=" + String.valueOf(page);
+        String url = instance + "/api/v1/search?q=" + query + "&type=video&page=" + page;
 
         Result res = Net.getInstance().get(url);
 

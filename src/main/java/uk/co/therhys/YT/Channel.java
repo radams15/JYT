@@ -7,14 +7,8 @@ import org.json.JSONObject;
 public class Channel {
     public String id;
     public String name;
-    public int subCount;
-    public int videoCount;
 
     public Channel(){}
-
-    public Channel(String id){
-        this.id = id;
-    }
 
     public String getName(){
         if(name != null){
