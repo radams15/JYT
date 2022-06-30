@@ -39,6 +39,7 @@ public class GoChannelDlg extends JDialog {
         add(ok);
 
         setSize(280, 120);
+        setLocationRelativeTo(null);
     }
 
     Channel getSelected(){

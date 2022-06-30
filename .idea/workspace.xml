@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Added unversioned files, fixed warnings.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/LoadingDlg.java" afterDir="false" />
+    <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Now has a loading bar during long events so the user cannot press buttons and to show something is happening.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/GoChannelDlg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/GoChannelDlg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/LoadingDlg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/LoadingDlg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/SettingsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/SettingsDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,7 @@
       <workItem from="1656257324691" duration="9000" />
       <workItem from="1656518321884" duration="5094000" />
       <workItem from="1656529729065" duration="526000" />
-      <workItem from="1656579967772" duration="6348000" />
+      <workItem from="1656579967772" duration="7136000" />
     </task>
     <task id="LOCAL-00001" summary="Working with awt.">
       <created>1654680838276</created>
@@ -180,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656583371572</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Now has a loading bar during long events so the user cannot press buttons and to show something is happening.">
+      <created>1656591350193</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656591350193</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +229,8 @@
     <MESSAGE value="Can now search and view just one channel." />
     <MESSAGE value="Version requirement reduced to java 1.4. Now runs on OSX Tiger, hopefully." />
     <MESSAGE value="Added unversioned files, fixed warnings." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added unversioned files, fixed warnings." />
+    <MESSAGE value="Now has a loading bar during long events so the user cannot press buttons and to show something is happening." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now has a loading bar during long events so the user cannot press buttons and to show something is happening." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

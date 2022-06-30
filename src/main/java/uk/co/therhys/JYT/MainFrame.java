@@ -209,6 +209,7 @@ public class MainFrame extends JFrame implements VidListener {
     private void setupUI(){
         setSize(800, 600);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         mainPanel = new UnifiedToolbarPanel(new BorderLayout());
         setContentPane(mainPanel);

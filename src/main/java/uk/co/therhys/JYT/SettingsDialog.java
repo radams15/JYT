@@ -63,6 +63,7 @@ public class SettingsDialog extends JDialog {
         this.conf = conf;
 
         setSize(600, 400);
+        setLocationRelativeTo(null);
 
         initUI();
     }

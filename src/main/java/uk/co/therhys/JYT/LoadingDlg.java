@@ -15,6 +15,7 @@ public class LoadingDlg extends JDialog {
         add(bar);
 
         setSize(200, 80);
+        setLocationRelativeTo(null);
 
         bar.setValue(1);
     }
