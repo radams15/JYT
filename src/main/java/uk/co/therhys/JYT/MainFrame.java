@@ -1,5 +1,18 @@
 package uk.co.therhys.JYT;
 
+import com.sun.rowset.internal.Row;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.awt.SWT_AWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.*;
+
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
 import uk.co.therhys.YT.Channel;
 import uk.co.therhys.YT.Config;
 import uk.co.therhys.YT.VidListener;
@@ -10,16 +23,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.List;
+
+import org.eclipse.swt.graphics.Image;
 
 import apple.dts.samplecode.osxadapter.OSXAdapter;
 
-public class MainFrame extends JFrame implements VidListener {
+public class MainFrame implements VidListener {
     private Config conf;
 
     private VideoTable table;
     private VideoTableModel tableModel;
     private JPanel mainPanel;
+
+    private Display display;
+    private Shell shell;
 
     private LoadingDlg loadingDlg = null;
 
@@ -32,26 +49,34 @@ public class MainFrame extends JFrame implements VidListener {
 
     private final boolean isOsx = (System.getProperty("os.name").toLowerCase().startsWith("mac os x"));
 
-    private static ImageIcon getIcon(String img){
-        ImageIcon icon;
+    private Image getIcon(String img){
+        Image icon;
         try{
             URL url = ClassLoader.getSystemClassLoader().getResource(img);
-            icon = new ImageIcon(url);
+            icon = new Image(display, url.openStream());
         }catch(Exception e){
-            icon = new ImageIcon("src/main/resources/"+img);
+            icon = new Image(display,"src/main/resources/"+img);
         }
 
         return icon;
     }
 
-    private static JButton newToolButton(String title, String img, ActionListener listener){
-        JButton btn = new UnifiedToolBtn(title);
+    private void newToolButton(ToolBar bar, String title, String img, final ActionListener listener){
+        ToolItem btn = new ToolItem(bar, SWT.PUSH);
+        btn.setText(title);
 
-        btn.setIcon(getIcon(img));
+        btn.setImage(getIcon(img));
 
-        btn.addActionListener(listener);
 
-        return btn;
+        btn.addSelectionListener(new SelectionListener() {
+            public void widgetSelected(SelectionEvent selectionEvent) {
+                listener.actionPerformed(new ActionEvent(shell, 0, "Proxy"));
+            }
+
+            public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+
+            }
+        });
     }
 
     private void playStream(Video.Stream stream){
@@ -62,12 +87,12 @@ public class MainFrame extends JFrame implements VidListener {
         loadingDlg = new LoadingDlg();
         //loadingDlg.setModal(true);
 
-        new Thread(new Runnable() {
+        display.asyncExec(new Runnable() {
             public void run() {
                 loadingDlg.setVisible(true);
                 loadingDlg.requestFocus();
             }
-        }).start();
+        });
     }
 
     private void hideLoading(){
@@ -92,7 +117,7 @@ public class MainFrame extends JFrame implements VidListener {
                 if(query != null && !query.equals("")){
                     tableModel.clear();
 
-                    SwingUtilities.invokeLater(new Runnable() {
+                    display.asyncExec(new Runnable() {
                         public void run() {
                             frameRef.conf.search(query, 1, frameRef);
                         }
@@ -114,7 +139,7 @@ public class MainFrame extends JFrame implements VidListener {
                     showLoading();
                     tableModel.clear();
 
-                    SwingUtilities.invokeLater(new Runnable() {
+                    display.asyncExec(new Runnable() {
                         public void run() {
                             channel.getVideos(conf, frameRef);
                         }
@@ -137,10 +162,10 @@ public class MainFrame extends JFrame implements VidListener {
 
         preferencesListener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SettingsDialog settingsDlg = new SettingsDialog(frameRef, conf);
+                /*SettingsDialog settingsDlg = new SettingsDialog(frameRef, conf);
                 settingsDlg.setVisible(true);
 
-                settingsDlg.save();
+                settingsDlg.save();*/
             }
         };
 
@@ -157,7 +182,7 @@ public class MainFrame extends JFrame implements VidListener {
         quitListener = new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 System.out.println("Quit");
-                frameRef.dispose();
+                shell.dispose();
             }
         };
 
@@ -169,20 +194,23 @@ public class MainFrame extends JFrame implements VidListener {
     }
 
     void setupToolbar(){
-        JToolBar toolbar = new JToolBar();
-        toolbar.setFloatable(false);
+        ToolBar toolbar = null;//shell.getToolBar();
+        if(toolbar == null){
+            toolbar = new ToolBar(shell, SWT.HORIZONTAL);
+        }
 
-        toolbar.add(newToolButton("Play", "play.png", playListener));
-        toolbar.add(newToolButton("Preferences", "preferences.png", preferencesListener));
-        toolbar.add(newToolButton("Search", "search.png", searchListener));
-        toolbar.add(newToolButton("Channels", "go.png", goChannelListener));
+        toolbar.setSize(300, 70);
+        toolbar.setLocation(0, 0);
 
-        mainPanel.add(toolbar, BorderLayout.NORTH);
+        newToolButton(toolbar, "Play", "play.png", playListener);
+        newToolButton(toolbar,"Preferences", "preferences.png", preferencesListener);
+        newToolButton(toolbar,"Search", "search.png", searchListener);
+        newToolButton(toolbar,"Channels", "go.png", goChannelListener);
     }
 
     void setupMenubar(){
         JMenuBar menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
+        //setJMenuBar(menuBar);
 
         if(!isOsx) {
             JMenu fileMenu = new JMenu("File");
@@ -208,14 +236,21 @@ public class MainFrame extends JFrame implements VidListener {
     }
 
     private void setupUI(){
-        setSize(800, 600);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
+        shell.setSize(800, 600);
+        shell.setLayout(new GridLayout(1, true));
+        //setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        //setLocationRelativeTo(null);
 
-        mainPanel = new UnifiedToolbarPanel(new BorderLayout());
-        setContentPane(mainPanel);
+        setupActions();
+        setupToolbar();
+        setupMenubar();
 
-        getRootPane().putClientProperty("apple.awt.brushMetalLook", Boolean.TRUE);
+        mainPanel = new JPanel(new BorderLayout());
+
+        SWT_AWT.embeddedFrameClass = "sun.lwawt.macosx.CViewEmbeddedFrame";
+        Composite comp = new Composite(shell, SWT.EMBEDDED);
+        comp.setBounds(5,5,300,300);
+        Frame frame = SWT_AWT.new_Frame(comp);
 
         BorderLayout layout = new BorderLayout();
         mainPanel.setLayout(layout);
@@ -226,33 +261,42 @@ public class MainFrame extends JFrame implements VidListener {
 
         tableModel = (VideoTableModel) table.getModel();
 
-        setupActions();
-        setupToolbar();
-        setupMenubar();
+        frame.add(mainPanel);
     }
 
     public MainFrame(Config conf){
         this.conf = conf;
 
-        Image appIcon = getIcon("JYT.png").getImage();
-        setIconImage(appIcon);
+        display = new Display();
+        shell = new Shell(display);
+
+        /*Image appIcon = getIcon("JYT.png");
+        //setIconImage(appIcon);
         if(isOsx){
             OSXAdapter.setApplicationIcon(this, appIcon);
-        }
+        }*/
 
         setupUI();
 
-        setVisible(true);
+        shell.pack();
+        shell.open();
+
+        //showLoading();
 
         final MainFrame frameRef = this;
 
-        showLoading();
-
-        new Thread(new Runnable() {
+        /*display.asyncExec(new Runnable() {
             public void run() {
                 frameRef.conf.getVideos(frameRef);
             }
-        }).start();
+        });*/
+
+        while (!shell.isDisposed()) {
+            if (!display.readAndDispatch()) {
+                display.sleep();
+            }
+        }
+        display.dispose();
     }
 
     public void vidFetchCompleted(){

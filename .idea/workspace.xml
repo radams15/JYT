@@ -5,8 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Centre windows, bump version number.">
+      <change afterPath="$PROJECT_DIR$/lib/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/3.4/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/3.8/._swt_darwin_x86_64.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/3.8/swt_darwin_ppc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/3.8/swt_darwin_x86_64.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/._swt-3.8-cocoa-macosx-x86_64" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/._swt-3.8-cocoa-macosx-x86_64.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/._.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/._about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/._about_files" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/._swt-debug.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/._swt.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/about_files/._IJG_README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/about_files/._mpl-v11.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/about_files/IJG_README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/about_files/mpl-v11.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/swt-debug.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/swt-3.8-cocoa-macosx-x86_64/swt.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin_ppc/3.8/swt_darwin_ppc-3.8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin_ppc/3.8/swt_darwin_ppc-3.8.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin_ppc/maven-metadata-local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin_x86_64/3.8/swt_darwin_x86_64-3.8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin_x86_64/3.8/swt_darwin_x86_64-3.8.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_darwin_x86_64/maven-metadata-local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" afterDir="false" />
+    </list>
+    <list id="d3a5aad5-32ea-463a-b88f-f2dfbff82af5" name="Re-add swt libraries" comment="Re-add swt libraries">
+      <change afterPath="$PROJECT_DIR$/lib/3.4/swt_darwin.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/3.4/swt_linux.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/3.4/swt_win32.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/3.8/swt_linux.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/3.8/swt_win32.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-cocoa-macosx.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-gtk-linux-x86.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-gtk-linux-x86_64.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.5/swt-3.5-win32-win32-x86.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-cocoa-macosx.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-gtk-linux-x86_64.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zips/3.8/download.php?file=%2Feclipse%2Fdownloads%2Fdrops%2FR-3.8.2-201301310800%2Fswt-3.8.2-win32-win32-x86.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.5/swt_linux-3.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.5/swt_linux-3.5.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.8/swt_linux-3.8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/3.8/swt_linux-3.8.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_linux/maven-metadata-local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.5/swt_win32-3.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.5/swt_win32-3.5.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.8/swt_win32-3.8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/3.8/swt_win32-3.8.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/localrepo/org/eclipse/swt/swt_win32/maven-metadata-local.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +79,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="AWT" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,11 +120,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="uk.co.therhys.JYT.JYT" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="JYT" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="uk.co.therhys.JYT.JYT" />
       <module name="JYT" />
+      <option name="VM_PARAMETERS" value="-XstartOnFirstThread" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="uk.co.therhys.JYT.*" />
@@ -85,6 +141,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="" />
+      <changelist id="d3a5aad5-32ea-463a-b88f-f2dfbff82af5" name="Re-add swt libraries" comment="" />
       <created>1654616010572</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -103,7 +160,7 @@
       <workItem from="1656257324691" duration="9000" />
       <workItem from="1656518321884" duration="5094000" />
       <workItem from="1656529729065" duration="526000" />
-      <workItem from="1656579967772" duration="8813000" />
+      <workItem from="1656579967772" duration="12858000" />
     </task>
     <task id="LOCAL-00001" summary="Working with awt.">
       <created>1654680838276</created>
@@ -189,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656592200623</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Centre windows, bump version number.">
+      <created>1656594481003</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1656594481003</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

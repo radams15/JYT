@@ -59,7 +59,7 @@ public class JYT {
         }
 
         MainFrame frame = new MainFrame(conf);
-        frame.setVisible(true);
+        //frame.setVisible(true);
 
         conf.save();
     }
