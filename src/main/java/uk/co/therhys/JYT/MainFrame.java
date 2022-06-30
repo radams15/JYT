@@ -60,11 +60,12 @@ public class MainFrame extends JFrame implements VidListener {
 
     private void showLoading(){
         loadingDlg = new LoadingDlg();
+        //loadingDlg.setModal(true);
 
         new Thread(new Runnable() {
             public void run() {
-                loadingDlg.setModal(true);
                 loadingDlg.setVisible(true);
+                loadingDlg.requestFocus();
             }
         }).start();
     }
@@ -256,9 +257,9 @@ public class MainFrame extends JFrame implements VidListener {
 
     public void vidFetchCompleted(){
         tableModel.sort();
-        System.out.println("Done");
 
         hideLoading();
+        System.out.println("Done");
     }
 
     public void fetchProgress(float proportion) {
