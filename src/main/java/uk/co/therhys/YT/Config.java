@@ -55,6 +55,7 @@ public class Config {
 
             for (int i=0 ; i<threads.length ; i++) {
                 try {
+                    listener.fetchProgress((float) i/(float)(subscriptions.length-1));
                     threads[i].join();
                 }catch (Exception e){
                     e.printStackTrace();
@@ -62,9 +63,12 @@ public class Config {
             }
         }else {
             for (int i=0 ; i<subscriptions.length ; i++) {
-                ((Channel) subscriptions[i]).getVideos(this, listener);
+                listener.fetchProgress((float) i/(float)(subscriptions.length-1));
+                ((Channel) subscriptions[i]).getVideos(this, listener, false);
             }
         }
+
+        listener.vidFetchCompleted();
     }
 
     public void search(String query, int page, VidListener listener){
@@ -88,6 +92,7 @@ public class Config {
         for(int i=0 ; i<array.length() ; i++){
             try {
                 JSONObject vidObj = array.getJSONObject(i);
+                listener.fetchProgress((float)i/ (float)(array.length()-1));
 
                 Channel channel = new Channel();
                 channel.id = vidObj.getString("authorId");

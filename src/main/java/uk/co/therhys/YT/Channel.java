@@ -18,7 +18,13 @@ public class Channel {
         return "Unknown";
     }
 
+
+
     public void getVideos(Config conf, VidListener listener){
+        getVideos(conf, listener, true);
+    }
+
+    public void getVideos(Config conf, VidListener listener, boolean notifyOnDone){
         Result res = Net.getInstance().get(conf.instance + "/api/v1/channels/" + id);
 
         try {
@@ -42,7 +48,10 @@ public class Channel {
 
                 listener.getVideo(vid);
             }
-            listener.vidFetchCompleted();
+
+            if(notifyOnDone) {
+                listener.vidFetchCompleted();
+            }
         }catch (JSONException e){
             e.printStackTrace();
         }

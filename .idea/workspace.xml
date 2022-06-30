@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb6bb16b-b657-4f36-a428-7bb2f103227e" name="Changes" comment="Added unversioned files, fixed warnings.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/._.DS_Store" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/OsxUiFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/UrlNet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/LoadingDlg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/JYT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/JYT/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Channel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidGetThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/therhys/YT/VidListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -109,7 +108,7 @@
       <workItem from="1656257324691" duration="9000" />
       <workItem from="1656518321884" duration="5094000" />
       <workItem from="1656529729065" duration="526000" />
-      <workItem from="1656579967772" duration="3387000" />
+      <workItem from="1656579967772" duration="6348000" />
     </task>
     <task id="LOCAL-00001" summary="Working with awt.">
       <created>1654680838276</created>
@@ -174,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656583030041</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added unversioned files, fixed warnings.">
+      <created>1656583371572</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1656583371572</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -21,6 +21,8 @@ public class MainFrame extends JFrame implements VidListener {
     private VideoTableModel tableModel;
     private JPanel mainPanel;
 
+    private LoadingDlg loadingDlg = null;
+
     private ActionListener goChannelListener;
     private ActionListener searchListener;
     private ActionListener playListener;
@@ -56,6 +58,27 @@ public class MainFrame extends JFrame implements VidListener {
         new VideoPlayer(stream).start();
     }
 
+    private void showLoading(){
+        loadingDlg = new LoadingDlg();
+
+        new Thread(new Runnable() {
+            public void run() {
+                loadingDlg.setModal(true);
+                loadingDlg.setVisible(true);
+            }
+        }).start();
+    }
+
+    private void hideLoading(){
+        if(loadingDlg != null){
+            loadingDlg.setModal(false);
+            loadingDlg.setVisible(false);
+
+            loadingDlg.dispose();
+            loadingDlg = null;
+        }
+    }
+
     private void setupActions(){
 
         final MainFrame frameRef = this;
@@ -87,6 +110,7 @@ public class MainFrame extends JFrame implements VidListener {
                 final Channel channel = dlg.getSelected();
 
                 if(channel != null) {
+                    showLoading();
                     tableModel.clear();
 
                     SwingUtilities.invokeLater(new Runnable() {
@@ -219,15 +243,27 @@ public class MainFrame extends JFrame implements VidListener {
         setVisible(true);
 
         final MainFrame frameRef = this;
-        SwingUtilities.invokeLater(new Runnable() {
+
+        showLoading();
+
+        new Thread(new Runnable() {
             public void run() {
                 frameRef.conf.getVideos(frameRef);
             }
-        });
+        }).start();
     }
 
     public void vidFetchCompleted(){
         tableModel.sort();
+        System.out.println("Done");
+
+        hideLoading();
+    }
+
+    public void fetchProgress(float proportion) {
+        if(loadingDlg != null){
+            loadingDlg.setProgress(proportion);
+        }
     }
 
 

@@ -4,4 +4,6 @@ public interface VidListener {
     void getVideo(Video video);
 
     void vidFetchCompleted();
+
+    void fetchProgress(float proportion);
 }
